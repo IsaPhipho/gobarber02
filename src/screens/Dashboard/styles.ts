@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { FlatList } from 'react-native';
+import { FlatList, FlatListProps } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { BorderlessButton } from 'react-native-gesture-handler';
@@ -91,7 +91,10 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
-export const TransactionList = styled(FlatList).attrs({
+export const TransactionList = styled(
+  FlatList as new (props: FlatListProps<DataListProps>) => 
+  FlatList<DataListProps>)
+  .attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 16,
